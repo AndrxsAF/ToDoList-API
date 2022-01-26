@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Todo from "./todo.jsx";
-import NoTodo from "./noTodo.jsx";
 import HeadTodo from "./headTodo.jsx";
 
 import { getTodos, putTodos } from "../../services/services.js";
@@ -98,21 +97,17 @@ const Home = () => {
 					selectImportance={selectImportance}
 					addNewTodo={addNewTodo}
 				/>
-				{!todoList.length ? (
-					<NoTodo />
-				) : (
-					todoList.map((todo, index) => (
-						<Todo
-							key={index}
-							id={index}
-							importance={todo.importance}
-							textContent={todo.label}
-							deleteTodo={deleteTodo}
-							checkList={checkList}
-							isCheck={todo.done}
-						/>
-					))
-				)}
+				{todoList.map((todo, index) => (
+					<Todo
+						key={index}
+						id={index}
+						importance={todo.importance}
+						textContent={todo.label}
+						deleteTodo={deleteTodo}
+						checkList={checkList}
+						isCheck={todo.done}
+					/>
+				))}
 				<div className="d-flex justify-content-center">
 					<span className="badge bg-info text-dark me-2">
 						Normales:{" "}
